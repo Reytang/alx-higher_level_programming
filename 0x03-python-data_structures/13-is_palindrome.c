@@ -2,40 +2,40 @@
 #include <stddef.h>
 
 /**
- * is_palindrome - determine if singly linked list is palindrome
+ * is_palindrome - prototype of the function
  * @head: pointer to head of singly linked list
  * Return: 0 if not, 1 if palindrome
  */
 int is_palindrome(listint_t **head)
 {
 	listint_t *tmp = *head;
-	unsigned int size = 0, i = 0;
+	unsigned int size = 0, x = 0;
 	int data[10240];
 
-	if (head == NULL) /* non-existing list is not */
+	if (head == NULL)
 		return (0);
 
-	if (*head == NULL) /* empty list is palindrome */
+	if (*head == NULL)
 		return (1);
 
-	while (tmp) /* find size of linked list */
+	while (tmp)
 	{
 		tmp = tmp->next;
 		size += 1;
 	}
-	if (size == 1) /* single node list is palindrome */
+	if (size == 1)
 		return (1);
 
 	tmp = *head;
-	while (tmp) /* pull node data into array to compare */
+	while (tmp)
 	{
-		data[i++] = tmp->n;
+		data[x++] = tmp->n;
 		tmp = tmp->next;
 	}
 
-	for (i = 0; i <= (size/2); i++)
+	for (x = 0; x <= (size/2); x++)
 	{
-		if (data[i] != data[size - i - 1])
+		if (data[x] != data[size - x - 1])
 			return (0);
 	}
 	return (1);
